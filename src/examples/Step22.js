@@ -1,9 +1,9 @@
 'use strict';
 
-import React, { Component, PropTypes } from "react";
-import validation from "react-validation-mixin";
-import strategy from "joi-validation-strategy";
-import Joi from "joi";
+import React, { Component, PropTypes } from 'react';
+import validation from 'react-validation-mixin';
+import strategy from 'joi-validation-strategy';
+import Joi from 'joi';
 
 class Step22 extends Component {
     constructor(props) {
