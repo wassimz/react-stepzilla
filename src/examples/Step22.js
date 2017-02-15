@@ -17,27 +17,34 @@ class Step22 extends Component {
         };
 
         this.getValidatorData = this.getValidatorData.bind(this);
-        this.isValidated = this._isValidated.bind(this);
+        this.isValidated = this.isValidated.bind(this);
+        this.getValidatorData = this.getValidatorData.bind(this);
+        this.renderHelpText = this.renderHelpText.bind(this);
+
     }
 
-    getValidatorData = () => ({
-        email: this.refs.email.value,
-    });
+    getValidatorData() {
+        return {
+            email: this.refs.email.value,
+        }
+    };
 
-    _isValidated() {
+    isValidated() {
         const isDataValid = this.props.isValid();
 
         return isDataValid;
     }
 
-    onChange = (e) => {
+    onChange(e) {
         const state = {};
 
         state[e.target.id] = e.target.value ;
         this.setState(state);
-    };
+    }
 
-    renderHelpText = (message, id) => (<div key={id}><span>{message}</span></div>);
+    renderHelpText(message, id) {
+        return (<div key={id}><span>{message}</span></div>);
+    };
 
     render() {
         // explicit class assigning based on validation
@@ -68,7 +75,7 @@ class Step22 extends Component {
                                     defaultValue={this.state.email}
                                     required
                                     onBlur={this.props.handleValidation('email')}
-                                    onChange={this.onChange}
+                                    onChange={this.onChange.bind(this)}
                                 />
                             </div>
                             {this.props.getValidationMessages('email').map(this.renderHelpText)}
