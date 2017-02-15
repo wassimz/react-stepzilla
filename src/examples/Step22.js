@@ -15,22 +15,25 @@ class Step22 extends Component {
         this.validatorTypes = {
             email: Joi.string().email(),
         };
+
+        this.getValidatorData = this.getValidatorData.bind(this);
+        this.isValidated = this._isValidated.bind(this);
     }
 
     getValidatorData = () => ({
         email: this.refs.email.value,
     });
 
-    isValidated = () => {
+    _isValidated() {
         const isDataValid = this.props.isValid();
 
         return isDataValid;
-    };
+    }
 
     onChange = (e) => {
         const state = {};
 
-        state[e.target.id] = { value: e.target.value };
+        state[e.target.id] = e.target.value ;
         this.setState(state);
     };
 
@@ -89,4 +92,3 @@ Step22.propTypes = {
 };
 
 export default validation(strategy)(Step22);
-
